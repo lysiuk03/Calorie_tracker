@@ -1,5 +1,6 @@
 ﻿using _03_Data_access;
 using _03_Data_access.Entities;
+using PropertyChanged;
 using System;
 using System.Linq;
 using System.Windows.Controls;
@@ -9,9 +10,42 @@ namespace _01_Calories
     /// <summary>
     /// Interaction logic for Profile.xaml
     /// </summary>
+    [AddINotifyPropertyChangedInterface]
     public partial class Profile : Page
     {
-        public Accounts Acc { get; set; }
+        public ProfileViewModel Model { get; set; }
+
+        public Profile()
+        {
+            InitializeComponent();
+            Model= new ProfileViewModel();
+            DataContext = Model;
+        }
+        private void Change_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Change_Profile change = new Change_Profile();
+            change.ShowDialog();
+
+            if (change.DialogResult == true)
+            {
+                Model = new ProfileViewModel();
+                DataContext = Model;
+            }
+        }
+    }
+    public class ProfileViewModel
+    {
+        CaloriesDbContext context = new CaloriesDbContext();
+        private Accounts acc;
+        public Accounts Acc
+        {
+            get { return acc; }
+            set
+            {
+                acc = value;
+                Init();
+            }
+        }
         public string Sex { get; set; }
         public Activity Activity { get; set; }
         public Goal Goal { get; set; }
@@ -22,12 +56,12 @@ namespace _01_Calories
         public int Fats_norm { get; set; }
         public int Carbs_norm { get; set; }
         public int Water_norm { get; set; }
-        public Profile()
+        public ProfileViewModel()
         {
-            InitializeComponent();
-            DataContext = this;
-            CaloriesDbContext context = new CaloriesDbContext();
             Acc = context.Accounts.FirstOrDefault(a => a.Login == GlobalLogin.Instance.Login);
+        }
+        void Init()
+        {
             Sex = (context.Sex.FirstOrDefault(s => s.Id == Acc.SexId)).Name;
             Activity = context.Activity.FirstOrDefault(a => a.Id == Acc.ActivityId);
             Goal = context.Goal.FirstOrDefault(g => g.Id == Acc.GoalId);

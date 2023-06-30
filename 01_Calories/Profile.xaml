@@ -73,5 +73,6 @@
         <TextBlock>Fats: <Run Text="{Binding Fats_norm}"></Run>gr</TextBlock>
         <TextBlock>Carbs: <Run Text="{Binding Carbs_norm}"></Run>gr</TextBlock>
         <TextBlock>Water norm: <Run Text="{Binding Water_norm}"></Run>ml</TextBlock>
+        <Button Click="Change_Click">Change</Button>
     </StackPanel>
 </Page>

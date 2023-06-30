@@ -51,15 +51,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Margin" Value="5" />
-        </Style>
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <TextBlock DockPanel.Dock="Top">+food</TextBlock>
         <DockPanel Margin="10" LastChildFill="True" DockPanel.Dock="Top">
             <TextBlock DockPanel.Dock="Left">Seach:</TextBlock>
-            <TextBox DockPanel.Dock="Top" Text="{Binding Str, UpdateSourceTrigger=PropertyChanged}" TextChanged="text_TextChanged"/>
+            <TextBox Margin="5" DockPanel.Dock="Top" Text="{Binding Str, UpdateSourceTrigger=PropertyChanged}" TextChanged="text_TextChanged"/>
         </DockPanel>
         <Button DockPanel.Dock="Bottom" Click="Add_Click">Add</Button>
         <UniformGrid DockPanel.Dock="Bottom" Margin="20" Columns="3" Rows="1">

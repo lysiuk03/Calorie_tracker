@@ -85,13 +85,13 @@ namespace _01_Calories
         {
             Date = DateTime.Now;
             Profile profile = new Profile();
-            Water_norm = profile.Water_norm;
+            Water_norm = profile.Model.Water_norm;
             Is_Water();
             Is_Calories();
-            Calories_norm = profile.Goal_norm;
-            Proteins_norm = profile.Proteins_norm;
-            Fats_norm = profile.Fats_norm;
-            Carbs_norm = profile.Carbs_norm;
+            Calories_norm = profile.Model.Goal_norm;
+            Proteins_norm = profile.Model.Proteins_norm;
+            Fats_norm = profile.Model.Fats_norm;
+            Carbs_norm = profile.Model.Carbs_norm;
         }
         public void AddWater(int portion)
         {
