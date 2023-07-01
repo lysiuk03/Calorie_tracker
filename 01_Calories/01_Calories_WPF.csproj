@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\03_Data_access\03_Data_access.csproj" />
+    <ProjectReference Include="..\03_Data_access\02_Data_access.csproj" />
   </ItemGroup>
 
 </Project>

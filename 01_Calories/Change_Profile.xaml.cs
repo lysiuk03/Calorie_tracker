@@ -1,10 +1,6 @@
-﻿using _03_Data_access;
-using _03_Data_access.Entities;
-using PropertyChanged;
+﻿using _01_Calories.ViewModels;
 using Syncfusion.Windows.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -47,25 +43,6 @@ namespace _01_Calories
             model.Save();
             this.DialogResult = true;
             this.Close();
-        }
-    }
-    [AddINotifyPropertyChangedInterface]
-    class AccVievModel
-    {
-        CaloriesDbContext context = new CaloriesDbContext();
-        public Accounts Acc { get; set; }
-        public List<Activity> Activities { get; set; }
-        public List<Goal> Goals { get; set; }
-        public AccVievModel()
-        {
-            Acc= context.Accounts.FirstOrDefault(a => a.Login == GlobalLogin.Instance.Login);
-            Activities = context.Activity.ToList();
-            Goals = context.Goal.ToList();
-        }
-        public void Save()
-        {
-            context.SaveChanges();
-          
         }
     }
 }

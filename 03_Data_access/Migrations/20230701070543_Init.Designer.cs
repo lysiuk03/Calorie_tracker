@@ -12,7 +12,7 @@ using _03_Data_access;
 namespace _03_Data_access.Migrations
 {
     [DbContext(typeof(CaloriesDbContext))]
-    [Migration("20230701065750_Init")]
+    [Migration("20230701070543_Init")]
     partial class Init
     {
         /// <inheritdoc />
